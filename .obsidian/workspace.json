@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Structured Parallel Programming/Chapter 1 Notes.md",
+                "file": "Structured Parallel Programming/Chapter 2.md",
                 "mode": "source",
                 "source": false
               }
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "d81c4a3ea81b8267",
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Structured Parallel Programming/Chapter 1 Notes.md",
+                "file": "Structured Parallel Programming/Chapter 2.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +116,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Structured Parallel Programming/Chapter 1 Notes.md",
+                "file": "Structured Parallel Programming/Chapter 2.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -139,7 +139,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Structured Parallel Programming/Chapter 1 Notes.md"
+                "file": "Structured Parallel Programming/Chapter 2.md"
               }
             }
           },
@@ -164,7 +164,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -178,11 +178,12 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "2ae41f8659f3f58c",
+  "active": "184db82d21b247c6",
   "lastOpenFiles": [
+    "Structured Parallel Programming/Chapter 2.md",
+    "Structured Parallel Programming/Chapter 1 Notes.md",
     "README.md",
     "Welcome.md",
-    "Structured Parallel Programming/Chapter 1 Notes.md",
     "Structured Parallel Programming"
   ]
 }
