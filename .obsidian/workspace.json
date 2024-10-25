@@ -46,10 +46,14 @@
             "id": "06c919e9d63acb50",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Work Notes/Using Distributed Fastflow.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Using Distributed Fastflow"
             }
           }
         ]
@@ -213,6 +217,8 @@
   },
   "active": "06c919e9d63acb50",
   "lastOpenFiles": [
+    "Work Notes/Using Distributed Fastflow.md",
+    "Work Notes",
     "Structured Parallel Programming/Chapter 3.md",
     "Structured Parallel Programming/Chapter 2.md",
     "Structured Parallel Programming/Chapter 1 Notes.md",
