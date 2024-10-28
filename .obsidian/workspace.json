@@ -48,12 +48,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Work Notes/Using Distributed Fastflow.md",
+                "file": "Work Notes/Upgrading GCC as a non-sudo user.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Using Distributed Fastflow"
+              "title": "Upgrading GCC as a non-sudo user"
             }
           }
         ]
@@ -218,6 +218,7 @@
   "active": "06c919e9d63acb50",
   "lastOpenFiles": [
     "Work Notes/Using Distributed Fastflow.md",
+    "Work Notes/Upgrading GCC as a non-sudo user.md",
     "Work Notes",
     "Structured Parallel Programming/Chapter 3.md",
     "Structured Parallel Programming/Chapter 2.md",
