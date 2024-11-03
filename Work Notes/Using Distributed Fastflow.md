@@ -29,3 +29,4 @@ mpirun -np 4  /home/j.markin/fastflow/tests/distributed/./test_group1  --DFF_Con
 
 `mpirun -machinefile $HOME/torch_projects/mpi_hostfile.txt -n 2 ./test_group27 --DFF_Config=test_group27.json`
 
+`mpicxx -I/opt/intel/oneapi/mpi/2021.10.0/include -I ~/fastflow -I/home/j.markin/lib/cereal/include -std=c++20 -Wall -O3 -finline-functions -DNDEBUG -o simple_pipeline simple_pipeline.cpp  -L/opt/intel/oneapi/mpi/2021.10.0/lib/release -lmpi -lmpifort -pthread`
