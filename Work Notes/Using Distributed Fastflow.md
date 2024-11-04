@@ -29,3 +29,27 @@ mpirun -np 4  /home/j.markin/fastflow/tests/distributed/./test_group1  --DFF_Con
 
 `mpirun -machinefile $HOME/torch_projects/mpi_hostfile.txt -n 2 ./test_group27 --DFF_Config=test_group27.json`
 
+
+{
+    "protocol" : "MPI",
+    "concurrency": "non-blocking",
+    "groups" : [
+    {   
+        "endpoint" : "node01-ib0",
+        "name" : "G1"
+    },
+    { 
+      	"name" : "G2",
+        "endpoint": "node02-ib0"
+    }
+    ]
+}
+
+
+Compiling the DFF Program
+`mpicxx -I ~/fastflow -I ~/cereal  -I/home/j.markin/lib/cereal/include -std=c++20 -Wall -O3 -finline-functions -DNDEBUG -o simple_pipeline simple_pipeline.cpp  -pthread`
+
+Running the DFF Program
+`mpirun -np 2 --host node01,node02 simple_pipeline  --DFF_Config=simple_pipeline.json`
+
+Content of JSON file should have the ports attached to the nodes and have no protocol and concurrency specified
