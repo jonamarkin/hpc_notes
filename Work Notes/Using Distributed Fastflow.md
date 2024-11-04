@@ -25,6 +25,19 @@ Running with MPI
 `I_MPI_OFI_PROVIDER=tcp I_MPI_DEBUG=4 LD_PRELOAD=/home/j.markin/mpiP_build/lib/libmpiP.so  mpirun -iface eth1 -n 4 -ppn 1 -f $HOME/torch_projects/mpi_hostfile_noslot_eth1 dff_run -V  test_group1.json ./test_group1`
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 mpirun -np 4  /home/j.markin/fastflow/tests/distributed/./test_group1  --DFF_Config=/home/j.markin/fastflow/tests/distributed/test_group1_mpi.json
 
 `mpirun -machinefile $HOME/torch_projects/mpi_hostfile.txt -n 2 ./test_group27 --DFF_Config=test_group27.json`
