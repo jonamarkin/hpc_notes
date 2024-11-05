@@ -54,3 +54,66 @@ Running the DFF Program
 Content of JSON file should have the ports attached to the nodes and have no protocol and concurrency specified
 
 `mpicxx -I/opt/intel/oneapi/mpi/2021.10.0/include -I ~/fastflow -I/home/j.markin/lib/cereal/include -std=c++20 -Wall -O3 -finline-functions -DNDEBUG -o simple_pipeline simple_pipeline.cpp  -L/opt/intel/oneapi/mpi/2021.10.0/lib/release -lmpi -lmpifort -pthread`
+
+
+Possible Runnig with OPX
+`mpirun --mca pml cm --mca mtl psm2 -np 2 --host node01,node02 simple_pipeline --DFF_Config=simple_pipeline.json`
+
+### Explanation of Parameters
+
+- **`--mca pml cm`**: This tells OpenMPI to use the **Connection Management (CM)** layer, which enables support for high-performance fabrics like Omni-Path.
+- **`--mca mtl psm2`**: This specifies the **psm2** Multi-Transport Layer (MTL), which is the protocol that supports Omni-Path.
+
+
+The `--mca` flag allows you to configure the network interface OpenMPI uses.
+
+
+
+The `--mca` flag allows you to configure the network interface OpenMPI uses.
+
+In OpenMPI, you can specify the network interface for communication using the `btl` (Byte Transfer Layer) or `mca` (Modular Component Architecture) parameters. This can be especially useful for selecting a high-performance network interface like InfiniBand or a specific Ethernet interface.
+
+Here's how to specify the network interface in OpenMPI:
+
+### 1. Using `--mca` Parameters
+The `--mca` flag allows you to configure the network interface OpenMPI uses.
+
+#### Ethernet Interface Example
+To specify an Ethernet interface (e.g., `eth0` or `enp0s3`), use:
+```bash
+mpirun --mca btl_tcp_if_include eth0 -np 2 --host node01,node02 simple_pipeline --DFF_Config=simple_pipeline.json
+```
+
+Here:
+- `--mca btl_tcp_if_include eth0` tells OpenMPI to use `eth0` for TCP communication.
+
+#### InfiniBand Interface Example
+If you want to use InfiniBand (typically using the `openib` protocol in OpenMPI), use:
+```bash
+mpirun --mca btl openib,self,vader --mca btl_openib_if_include mlx5_0 -np 2 --host node01,node02 simple_pipeline --DFF_Config=simple_pipeline.json
+```
+
+Here:
+- `--mca btl openib,self,vader` specifies the Byte Transfer Layer to use InfiniBand (`openib`), shared memory (`self`), and intra-node communication (`vader`).
+- `--mca btl_openib_if_include mlx5_0` restricts OpenMPI to the `mlx5_0` InfiniBand interface.
+
+> **Note**: Replace `mlx5_0` with the appropriate InfiniBand device name for your system (e.g., `ib0` or similar).
+
+### 2. Checking Available Interfaces
+To see the network interfaces available on your system, you can use:
+```bash
+ifconfig
+```
+or
+```bash
+ip a
+```
+
+### 3. Alternative: Using an MCA Parameter File
+If you use the same interface consistently, you can specify it in an MCA parameter file, typically located at `~/.openmpi/mca-params.conf`:
+```plaintext
+btl_tcp_if_include = eth0
+btl_openib_if_include = mlx5_0
+```
+
+With this setup, you don’t need to specify `--mca` parameters each time you run `mpirun`.
