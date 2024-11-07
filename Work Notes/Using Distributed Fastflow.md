@@ -56,7 +56,7 @@ Content of JSON file should have the ports attached to the nodes and have no pro
 `mpicxx -I/opt/intel/oneapi/mpi/2021.10.0/include -I ~/fastflow -I/home/j.markin/lib/cereal/include -std=c++20 -Wall -O3 -finline-functions -DNDEBUG -o simple_pipeline simple_pipeline.cpp  -L/opt/intel/oneapi/mpi/2021.10.0/lib/release -lmpi -lmpifort -pthread`
 
 
-Possible Runnig with OPX
+**Possible Runnig with OPX**
 `mpirun --mca pml cm --mca mtl psm2 -np 2 --host node01,node02 simple_pipeline --DFF_Config=simple_pipeline.json`
 
 ### Explanation of Parameters
@@ -117,3 +117,43 @@ btl_openib_if_include = mlx5_0
 ```
 
 With this setup, you don’t need to specify `--mca` parameters each time you run `mpirun`.
+
+
+
+
+
+To configure OpenMPI with Cornelis Omni-Path using the OFI (OpenFabrics Interfaces) component, you can use the `ofi` MTL with the PSM2 provider, specifying parameters to optimize Omni-Path communication:
+
+1. Use the `--mca` options:
+   ```bash
+   mpirun --mca pml cm --mca mtl ofi --mca mtl_ofi_provider_include psm2 -np 2 -host node01,node02 simple_pipeline --DFF_Config=simple_pipeline.json
+   ```
+
+```bash
+   mpirun --mca pml cm --mca mtl ofi --mca mtl_ofi_provider_include psm2 -np 2 -host node01-ib0,node02-ib0 test_group9 --DFF_Config=test_group9.json
+   ```
+2. Set multi-rail or multi-HFI support if using multiple HFIs with `PSM2_MULTIRAIL` or `HFI_UNIT` environment variables.
+
+For details, refer to the [OpenMPI OFI documentation](https://docs.open-mpi.org/en/main/tuning-apps/networking/ofi.html).
+
+
+To set up multi-HFI (Host Fabric Interface) support with OpenMPI for Cornelis Omni-Path, use the following environment variable before running `mpirun`:
+
+```bash
+export PSM2_MULTI_HFI=1
+```
+
+This allows OpenMPI to utilize multiple Omni-Path interfaces (HFIs) on each node for higher aggregate bandwidth.
+
+### Ethernet vs. Omni-Path Defaults
+If you don’t specify network options with `--mca`, OpenMPI may default to Ethernet. Specifying Omni-Path with `--mca mtl ofi --mca mtl_ofi_provider_include psm2` ensures it uses Omni-Path.
+
+To explicitly set Ethernet, use:
+```bash
+mpirun --mca btl_tcp_if_include eth0 -np 2 --host node01,node02 simple_pipeline --DFF_Config=simple_pipeline.json
+```
+
+
+```bash
+mpirun --mca btl_tcp_if_include eth0 -np 2 --host node01,node02 test_group9 --DFF_Config=test_group9.json
+```
