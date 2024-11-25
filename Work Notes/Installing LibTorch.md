@@ -39,3 +39,6 @@ Rebuild torch with gcc libraries instead of
 
 Create new environment with python without sourcing the default things
 And build the torch there
+
+
+Or consider linking the gcc libraries when building instead or when running cmake
