@@ -1,3 +1,4 @@
+
 Running DFF
 - Use the Makefile
 - Compile with mpicxx
@@ -157,3 +158,16 @@ mpirun --mca btl_tcp_if_include eth0 -np 2 --host node01,node02 simple_pipeline 
 ```bash
 mpirun --mca btl_tcp_if_include eth0 -np 2 --host node01,node02 test_group9 --DFF_Config=test_group9.json
 ```
+
+
+
+I_MPI_DEBUG=4  I_MPI_THREAD_SPLIT=enable I_MPI_THREAD_RUNTIME=openmp I_MPI_THREAD_MAX=10 mpirun -hosts node01,node02 -n 2 ./test_group9 --DFF_Config=test_group9.json
+
+
+mpiicpx -I ~/fastflow -I/home/j.markin/lib/cereal/include -std=c++20 -Wall -O3 -o test_group9 test_group9.cpp  -pthread
+
+I_MPI_DEBUG=4  I_MPI_THREAD_SPLIT=enable I_MPI_THREAD_RUNTIME=openmp I_MPI_THREAD_MAX=10
+
+
+
+mpicxx -I/home/j.markin/fastflow -I/home/ntonci/cereal/include -I /opt/intel/oneapi/mpi/latest/include/ -std=c++17 -Wall -O3 -finline-functions -DNDEBUG -o test_group9 test_group9.cpp  -pthread -L /opt/intel/oneapi/mpi/latest/lib

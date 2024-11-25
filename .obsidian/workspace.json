@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Structured Parallel Programming/Chapter 3.md",
+                "file": "Work Notes/Installing LibTorch.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Chapter 3"
+              "title": "Installing LibTorch"
             }
           }
         ],
@@ -215,12 +215,13 @@
       "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
-  "active": "06c919e9d63acb50",
+  "active": "1ebcfd9243d8bc20",
   "lastOpenFiles": [
-    "Work Notes/Upgrading GCC as a non-sudo user.md",
-    "Work Notes/Using Distributed Fastflow.md",
-    "Work Notes",
     "Structured Parallel Programming/Chapter 3.md",
+    "Work Notes/Installing LibTorch.md",
+    "Work Notes/Using Distributed Fastflow.md",
+    "Work Notes/Upgrading GCC as a non-sudo user.md",
+    "Work Notes",
     "Structured Parallel Programming/Chapter 2.md",
     "Structured Parallel Programming/Chapter 1 Notes.md",
     "README.md",
