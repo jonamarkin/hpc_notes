@@ -154,10 +154,34 @@ $HOME/torchenv/bin/python
 mkdir build
 cd build
 
-cmake -DCMAKE_BUILD_TYPE=Release       -DCMAKE_INSTALL_PREFIX=$HOME/hpcproject/pytorch-install       -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc       -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++       -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install       -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64" ..
+cmake -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=$HOME/hpcproject/pytorch-install \
+      -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc \
+      -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++ \
+      -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install \
+      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64" ..
 
 
 cmake --build . --config Release
 
 
 ```
+
+
+```bash
+cmake -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_INSTALL_PREFIX=$HOME/hpcproject/pytorch-install \
+      -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc \
+      -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++ \
+      -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install \
+      -DCMAKE_INCLUDE_DIRS=$HOME/hpcproject/pytorch-install/include \
+      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64" ..
+```
+
+
+```bash
+
+cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install  -DCMAKE_BUILD_TYPE=Release       -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc       -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64" ..
+
+```
+
