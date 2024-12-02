@@ -185,3 +185,10 @@ cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install  -DCMAKE_BUILD_TYPE=R
 
 ```
 
+
+```bash
+cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install       -DCMAKE_C_COMPILER=icx       -DCMAKE_CXX_COMPILER=icpx      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64" ..
+
+
+```
+
