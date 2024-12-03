@@ -187,8 +187,17 @@ cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install  -DCMAKE_BUILD_TYPE=R
 
 
 ```bash
-cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install       -DCMAKE_C_COMPILER=icx       -DCMAKE_CXX_COMPILER=icpx      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64" ..
+cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install       -DCMAKE_C_COMPILER=icx       -DCMAKE_CXX_COMPILER=icpx      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64" -DOpenMP_CXX_FLAGS="-fopenmp"  -DOpenMP_CXX_LIB_NAMES="gomp"  -DOpenMP_gomp_LIBRARY=$HOME/local/gcc-14.2.0/lib64/libgomp.so ..
 
 
+```
+
+```bash
+ln -s /opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so ./libomp.so
+
+```
+
+```bash
+export LD_PRELOAD=/opt/intel/oneapi/compiler/2023.2.1/linux/compiler/lib/intel64_lin/libiomp5.so
 ```
 
