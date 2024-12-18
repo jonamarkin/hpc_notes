@@ -290,3 +290,44 @@ endif (MSVC)
 
 
 ```
+
+
+
+```bash
+cmake -DCMAKE_PREFIX_PATH=/home/j.markin/torchenv/lib64/python3.11/site-packages/torch/share/cmake/Torch       -DCMAKE_C_COMPILER=icx       -DCMAKE_CXX_COMPILER=icpx   ..
+```
+
+
+```bash
+
+cmake -DCMAKE_PREFIX_PATH=/home/j.markin/torchenv/lib64/python3.11/site-packages/torch/share/cmake/Torch   ..
+```
+
+
+
+```bash
+cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install      -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc     -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64 -m64  -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl"       -DCMAKE_CXX_FLAGS="-m64  -I"${MKLROOT}/include"" ..
+
+```
+
+```bash
+
+cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install      -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc     -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++      -DCMAKE_EXE_LINKER_FLAGS="-m64  -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_gnu_thread.a ${MKLROOT}/lib/intel64/libmkl_core.a -Wl,--end-group -lgomp -lpthread -lm -ldl"       -DCMAKE_CXX_FLAGS="-m64  -I"${MKLROOT}/include"" ..
+
+```
+
+
+```bash
+make -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install      -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc     -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,$HOME/local/gcc-14.2.0/lib64  -m64  ${MKLROOT}/lib/intel64/libmkl_scalapack_lp64.a -Wl,--start-group ${MKLROOT}/lib/intel64/libmkl_cdft_core.a ${MKLROOT}/lib/intel64/libmkl_intel_lp64.a ${MKLROOT}/lib/intel64/libmkl_intel_thread.a ${MKLROOT}/lib/intel64/libmkl_core.a ${MKLROOT}/lib/intel64/libmkl_blacs_intelmpi_lp64.a -Wl,--end-group -liomp5 -lpthread -lm -ldl"       -DCMAKE_CXX_FLAGS="-m64  -I"${MKLROOT}/include"" ..
+
+```
+
+
+Build LibTorch
+
+```bash
+
+cmake -DCMAKE_PREFIX_PATH=$HOME/hpcproject/pytorch-install       -DCMAKE_C_COMPILER=$HOME/local/gcc-14.2.0/bin/gcc       -DCMAKE_CXX_COMPILER=$HOME/local/gcc-14.2.0/bin/g++       -DPNG_LIBRARY=$HOME/local/lib/libpng.so       -DPNG_PNG_INCLUDE_DIR=$HOME/local/include       -DJPEG_LIBRARY=$HOME/local/lib/libjpeg.so       -DJPEG_INCLUDE_DIR=$HOME/local/include ..
+
+```
+
